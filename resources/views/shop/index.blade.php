@@ -14,7 +14,7 @@
                         <p class="description">{{ mb_substr(strip_tags($product->description), 0, 120) }} {{ strlen(strip_tags($product->description)) > 120 ? '...':'' }}</p>
                         <div class="clearfix">
                             <div class="pull-left price">VNĐ {{ number_format($product->price, 0, '.', ',') }}</div>
-                            <a href="#" class="btn btn-success pull-right" role="button"><i class="fa fa-cart-plus" aria-hidden="true"></i> Thêm vào giỏ</a>
+                            <a href="{{ route('product.addToCart', ['id' => $product->id]) }}" class="btn btn-success pull-right" role="button"><i class="fa fa-cart-plus" aria-hidden="true"></i> Thêm vào giỏ</a>
                         </div>
                     </div>
                 </div>
