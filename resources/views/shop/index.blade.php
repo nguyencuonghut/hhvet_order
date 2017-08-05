@@ -6,7 +6,7 @@
     @foreach($products->chunk(3) as $productChunk)
         <div class="row">
             @foreach($productChunk as $product)
-            <div class="col-sm-6 col-md-4">
+            <div class="col-md-3 col-sm-4 col-md-offset-1">
                 <div class="thumbnail">
                     <img src="{{ $product->image }}" alt="..." class="img-responsive">
                     <div class="caption">
