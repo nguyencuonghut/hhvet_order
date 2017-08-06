@@ -10,12 +10,13 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <link rel="stylesheet" href="{{ URL::to('css/main.css') }}">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
     @yield('styles')
 </head>
 
 <body>
 @include('partials.header')
-<div class="container">
+<div class="container-fluid">
     @yield('content')
 </div>
 <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>

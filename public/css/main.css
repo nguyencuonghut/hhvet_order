@@ -1,5 +1,5 @@
 .thumbnail img {
-    max-height: 150px;
+    max-height: 200px;
 }
 
 .thumbnail .description {
@@ -8,5 +8,4 @@
 
 .price {
     font-weight: bold;
-    font-size: 16px;
 }
