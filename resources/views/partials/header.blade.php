@@ -8,7 +8,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="{{ route('product.index') }}">Brand</a>
+            <a class="navbar-brand" href="{{ route('product.index') }}"><img style="height: 10px;" src="{{ URL::to('honghavet.png') }}" alt="Honghavet"></a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -24,6 +24,7 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user-circle" aria-hidden="true"></i> Quản lý tài khoản <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         @if(Auth::check())
+                            <li><a href="{{ route('order') }}"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Đặt hàng</a></li>
                             <li><a href="{{ route('user.profile') }}"><i class="fa fa-user" aria-hidden="true"></i> Profile</a></li>
                             <li><a href="{{ route('user.logout') }}"><i class="fa fa-sign-out" aria-hidden="true"></i>Đăng xuất</a></li>
                         @else

@@ -27,6 +27,16 @@ Route::get('/shopping-cart', [
     'as' => 'product.shoppingCart'
 ]);
 
+Route::get('/checkout', [
+    'uses' => 'ProductController@getCheckout',
+    'as' => 'checkout'
+]);
+
+Route::post('/checkout', [
+    'ues' => 'ProductController@postCheckout',
+    'as' => 'checkout'
+]);
+
 Route::group(['prefix' => 'user'], function() {
     Route::group(['middleware' => 'guest'], function() {
         Route::get('/signup', [
@@ -54,6 +64,10 @@ Route::group(['prefix' => 'user'], function() {
         Route::get('/logout', [
             'uses' => 'UserController@getLogout',
             'as' => 'user.logout'
+        ]);
+        Route::get('/order', [
+            'uses' => 'ProductController@getOrder',
+            'as' => 'order'
         ]);
     });
 });

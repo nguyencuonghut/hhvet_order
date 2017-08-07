@@ -9,3 +9,12 @@
 .price {
     font-weight: bold;
 }
+
+.logo img {
+    width: 117px;
+    height: 50px;
+}
+
+.input-box {
+    padding-bottom: 92px;
+}

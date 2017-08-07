@@ -11,7 +11,7 @@
                     <img src="{{ $product->image }}" alt="..." class="img-responsive">
                     <div class="caption">
                         <b style="color:red;">{{ $product->title }}</b>
-						<br>
+                        <br>
                         <!-- <p class="description">{{ mb_substr(strip_tags($product->description), 0, 120) }} {{ strlen(strip_tags($product->description)) > 120 ? '...':'' }}</p> -->
                         <div class="clearfix">
                             <div class="pull-left price">VNĐ {{ number_format($product->price, 0, '.', ',') }}</div>
