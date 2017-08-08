@@ -69,5 +69,14 @@ Route::group(['prefix' => 'user'], function() {
             'uses' => 'ProductController@getOrder',
             'as' => 'order'
         ]);
+        Route::post('/order', [
+            'uses' => 'ProductController@postOrder',
+            'as' => 'order'
+        ]);
+        Route::get('/review', [
+            'uses' => 'ProductController@getReview',
+            'as' => 'review'
+        ]);
+
     });
 });

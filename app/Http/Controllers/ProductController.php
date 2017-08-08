@@ -41,7 +41,7 @@ class ProductController extends Controller
 
     public function getCheckout() {
         if(!Session::has('cart')) {
-            return view('shop.shoping-cart');
+            return view('shop.shopping-cart');
         }
 
         $oldCart = Session::get('cart');
@@ -66,5 +66,39 @@ class ProductController extends Controller
     public function getOrder() {
         $products = Product::all();
         return view('shop.order', ['products' => $products]);
+    }
+
+    public function postOrder(Request $request) {
+        $products = Product::all();
+        $oldCart = NULL;
+        $cart = new Cart($oldCart);
+        foreach ($products as $product) {
+            $storedItem = ['qty' => 0, 'price' => $product->price, 'item' => $product];
+            $storedItem['qty'] = $request->input($product->code);
+            $storedItem['price'] = $product->price * $storedItem['qty'];
+            $cart->items[$product->code] = $storedItem;
+            $cart->totalQty += $request->input($product->code);
+            $cart->totalPrice += $storedItem['price'];
+        }
+        $request->session()->put('order', $cart->totalQty);
+
+        return view('shop.review', ['products' => $cart->items, 'totalPrice' => $cart->totalPrice]);
+    }
+
+    public function getReview(Request $request) {
+        $products = Product::all();
+        $oldCart = NULL;
+        $cart = new Cart($oldCart);
+
+        foreach ($products as $product) {
+            $storedItem = ['qty' => 0, 'price' => $product->price, 'item' => $product];
+            $storedItem['qty'] = $request->input($product->code);
+            $storedItem['price'] = $product->price * $storedItem['qty'];
+            $cart->items[$request->id] = $storedItem;
+            $cart->totalQty++;
+            $cart->totalPrice += $product->price;
+        }
+
+        return view('shop.shopping-cart', ['products' => $cart->items, 'totalPrice' => $cart->totalPrice]);
     }
 }

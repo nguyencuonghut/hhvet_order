@@ -17,7 +17,11 @@
                 <li>
                     <a href="{{ route('product.shoppingCart') }}">
                         <i class="fa fa-shopping-cart" aria-hidden="true"></i> Giỏ hàng
-                        <span class="badge">{{ Session::has('cart') ? Session::get('cart')->totalQty : '' }}</span>
+                        @if(!Auth::check())
+                            <span class="badge">{{ Session::has('cart') ? Session::get('cart')->totalQty : '' }}</span>
+                        @else
+                            <span class="badge">{{ Session::has('order') ? Session::get('order'): '' }}</span>
+                        @endif
                     </a>
                 </li>
                 <li class="dropdown">

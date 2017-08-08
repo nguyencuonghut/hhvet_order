@@ -3,41 +3,48 @@
 @section('title', 'Order')
 
 @section('content')
-    @if(Session::has('cart'))
-        @foreach($products as $product)
-            <div class="row">
-                <div class="col-sm-1 col-md-1 col-md-offset-3 col-sm-offset-3">
-                        <label for="email">{{ $product->code }}</label>
-                </div>
-                <div class="col-sm-2 col-md-2">
-                    <label for="email">{{ $product->title }}</label>
-                </div>
-                <div class="col-sm-1 col-md-1">
-                        <label for="email">{{ $product->price }} VNĐ</label>
-                </div>
-                <div class="col-sm-1 col-md-1">
-                    <ul class="list-group">
-                        <input type="number" id="" name="email" class="form-control input-md">
-                    </ul>
-                </div>
-            </div>
-        @endforeach
+    <form action="{{ route('order') }}" method="post">
+    @foreach($products as $product)
         <div class="row">
-            <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
-                <strong>Tổng tiền: {{ number_format('100000000', 0, '.', ',') }} VNĐ</strong>
+            <div class="col-xs-7 col-sm-3 col-md-3 col-md-offset-3 col-sm-offset-3">
+                <ul class="media-list">
+                    <li class="media">
+                        <div class="media-left">
+                            <a href="#">
+                                <img class="media-object" style = "width: 60px" src="{{ $product->image }}" alt="{{ $product->title }}">
+                            </a>
+                        </div>
+                        <div class="media-body">
+                            <b class="media-heading">{{ $product->title }}</b>
+                            <br><br>
+                            <i style="color:red">{{ number_format($product->price, 0, '.', ',') }} VNĐ</i>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-xs-4 col-sm-3 col-md-3 col-xs-offset-1 col-sm-offset-1 col-md-offset-1">
+                <select name="{{ $product->code }}" id="{{ $product->code }}" class="form-control">
+                    <?php
+                        $numbers = ['0'];
+                        $i = 0;
+                        for($i = 1; $i < 500; $i++) {
+                            $numbers[$i] = $i;
+                        }
+                    ?>
+                    @foreach($numbers as $number)
+                        <option value="{{ $number }}">{{ $number }}</option>
+                    @endforeach
+                </select>
             </div>
         </div>
-        <hr>
-        <div class="row">
-            <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
-                <a href="{{ route('checkout')}}" type="button" class="btn btn-success">Đặt hàng</a>
-            </div>
+    @endforeach
+    <hr>
+    <div class="row">
+        <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
+            <button type="submit" class="btn btn-success btn-lg">Đặt hàng</button>
+            {{ csrf_field() }}
         </div>
-    @else
-        <div class="row">
-            <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
-                <h2>Không có sản phẩm nào trong giỏ Cart!</h2>
-            </div>
-        </div>
-    @endif
+    </div>
+    <hr>
+    </form>
 @endsection
