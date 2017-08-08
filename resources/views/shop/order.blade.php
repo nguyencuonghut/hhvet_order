@@ -40,11 +40,10 @@
     @endforeach
     <hr>
     <div class="row">
-        <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
+        <div class="col-xs-7 col-sm-3 col-md-3 col-xs-offset-4 col-md-offset-5 col-sm-offset5">
             <button type="submit" class="btn btn-success btn-lg">Đặt hàng</button>
             {{ csrf_field() }}
         </div>
     </div>
-    <hr>
     </form>
 @endsection
