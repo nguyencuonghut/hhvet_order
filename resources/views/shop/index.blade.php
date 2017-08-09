@@ -3,6 +3,17 @@
 @section('title', 'Shop index')
 
 @section('content')
+    @if ($message = Session::get('success'))
+        <div class="alert alert-success" role="alert">
+            {{ Session::get('success') }}
+        </div>
+    @endif
+
+    @if ($message = Session::get('error'))
+        <div class="alert alert-danger" role="alert">
+            {{ Session::get('error') }}
+        </div>
+    @endif
     @foreach($products->chunk(12) as $productChunk)
         <div class="row">
             @foreach($productChunk as $product)

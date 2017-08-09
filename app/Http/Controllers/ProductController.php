@@ -13,6 +13,7 @@ use Mail;
 class ProductController extends Controller
 {
     public function getIndex() {
+        Session::forget('order');
         $products = Product::all();
 
         return view('shop.index')->withProducts($products);
@@ -27,7 +28,6 @@ class ProductController extends Controller
 
         $request->session()->put('cart', $cart);
 
-        //dd($request->session()->get('cart', $cart));
         return redirect()->route('product.index');
     }
 
@@ -89,10 +89,8 @@ class ProductController extends Controller
         // store order to database
         $order =  new Order();
         $order->cart = serialize($cart);
-        //$order->name = $cart->totalPrice;
         Auth::user()->orders()->save($order);
 
-        //return view('shop.review', ['products' => $cart->items, 'totalPrice' => $cart->totalPrice, 'id' => $order->id]);
         return redirect()->route('review', ['id' => $order->id]);
     }
 
@@ -134,26 +132,23 @@ class ProductController extends Controller
         $m_order->address   = $request->input('address');
         $m_order->bill_addr = $request->input('bill_addr');
         $m_order->contact   = $request->input('contact');
+        $m_order->note   = $request->input('note');
         Auth::user()->orders()->save($m_order);
 
         // Send email to Sale Admin
-        $emailcontent = array('name'    => $m_order->name,
-            'address'           => $m_order->address,
-            'bill_addr'         => $m_order->bill_addr,
-            'contact'           => $m_order->contact,
-        );
-        $data = array(
-            'saleadmin_email'       => "nguyenvancuong@honghafeed.com.vn",
-            'customer'              => $m_order->name
-        );
-        Mail::send('shop.bookingform', $emailcontent, function ($message) use ($data) {
-            $message->from('luong_thuoc@honghafeed.com.vn', 'Đơn đặt hàng thuốc thú y');
-            $message->to($data['saleadmin_email'])
+        $m_order->cart = unserialize($m_order->cart);
+        $mailer = app()->make('mailer');
+
+
+        $data = array('customer' => $m_order->name);
+        $mailer->send('shop.bookingform', ['order' => $m_order] , function ($message) use ($data){
+            $message->from('luong_thuoc@honghafeed.com.vn', 'HHVET Order System');
+            $message->to('nguyenvancuong@honghafeed.com.vn')
                 ->subject('Đơn đặt hàng thuốc cho đại lý:' . ' ' . $data['customer']);
         });
 
         // Set the flash message
-        Session::flash('success', 'Đơn đặt hàng đã được gửi email tới SaleAdmin thành công.');
+        Session::flash('success', 'Đặt hàng thành công!');
 
         return redirect()->route('product.index');
     }
