@@ -6,42 +6,44 @@
     @if($order->cart->totalPrice)
         <form action="" method="post">
         @foreach($order->cart->items as $product)
-        <div class="row">
-            <div class="col-xs-7 col-sm-3 col-md-3 col-md-offset-3 col-sm-offset-3">
-                <ul class="media-list">
-                    <li class="media">
-                        <div class="media-left">
-                            <a href="#">
-                                <img class="media-object" style = "width: 60px" src="{{ $product['item']['image'] }}" alt="{{ $product['item']['title'] }}">
-                            </a>
-                        </div>
-                        <div class="media-body">
-                            <b class="media-heading">{{ $product['item']['title'] }}</b>
-                            <br><br>
-                            <i style="color:red">{{ number_format($product['item']['price'], 0, '.', ',') }} VNĐ</i>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-            <div class="col-xs-4 col-sm-3 col-md-3 col-xs-offset-1 col-sm-offset-1 col-md-offset-1">
-                <select name="{{ $product['item']['code'] }}" id="{{ $product['item']['code'] }}" class="form-control">
-                    <?php
-                    $numbers = ['0'];
-                    $i = 0;
-                    for($i = 1; $i < 500; $i++) {
-                        $numbers[$i] = $i;
-                    }
-                    ?>
-                    @foreach($numbers as $number)
-                        @if($number == $product['qty'])
-                        <option value="{{ $number }}" selected>{{ $number }}</option>
-                        @else
-                        <option value="{{ $number }}">{{ $number }}</option>
-                        @endif
-                    @endforeach
-                </select>
-            </div>
-        </div>
+            @if($product['qty'])
+                <div class="row">
+                    <div class="col-xs-7 col-sm-3 col-md-3 col-md-offset-3 col-sm-offset-3">
+                        <ul class="media-list">
+                            <li class="media">
+                                <div class="media-left">
+                                    <a href="#">
+                                        <img class="media-object" style = "width: 60px" src="{{ $product['item']['image'] }}" alt="{{ $product['item']['title'] }}">
+                                    </a>
+                                </div>
+                                <div class="media-body">
+                                    <b class="media-heading">{{ $product['item']['title'] }}</b>
+                                    <br><br>
+                                    <i style="color:red">{{ number_format($product['item']['price'], 0, '.', ',') }} VNĐ</i>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-xs-4 col-sm-3 col-md-3 col-xs-offset-1 col-sm-offset-1 col-md-offset-1">
+                        <select name="{{ $product['item']['code'] }}" id="{{ $product['item']['code'] }}" class="form-control">
+                            <?php
+                            $numbers = ['0'];
+                            $i = 0;
+                            for($i = 1; $i < 500; $i++) {
+                                $numbers[$i] = $i;
+                            }
+                            ?>
+                            @foreach($numbers as $number)
+                                @if($number == $product['qty'])
+                                <option value="{{ $number }}" selected>{{ $number }}</option>
+                                @else
+                                <option value="{{ $number }}">{{ $number }}</option>
+                                @endif
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+            @endif
         @endforeach
         <div class="row">
             <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
