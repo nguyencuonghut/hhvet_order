@@ -17,7 +17,10 @@ class ProductTableSeeder extends Seeder
             'title'         => 'O.T.C - LA inj',
             'description'   => 'Phòng và điều trị các bệnh do vi khuẩn Gram âm và Gram dương mẫn cảm với Oxytetracyclline gây ra, bệnh do spilocheles và rickettsia.
 Đối với lợn: Điều trị viêm phổi, viêm khớp, viêm vú, viêm nội mạc tử cung, viêm ruột do vi khuẩn, nhiễm trùng vết thương, bệnh xoắn khuẩn, đóng dấu lợn, tụ huyết trùng, lợn con bị tiêu chảy, nhiễm trùng thứ phát sau khi phẫu thuật hoặc sau đẻ',
-            'price'         => 12500
+            'price'         => 182729,
+            'format'        => 'Chai 100ml',
+            'pro_major'     => 10,
+            'pro_minor'     => 2
         ]);
 
         $product->save();
@@ -32,7 +35,10 @@ Tăng tỷ lệ tăng trọng trên ngày: Không những tăng trọng trên ng
 Mức độ an toàn cao. Không có kết quả gây chết ở liều gấp 5 lên điều trị. 
 Trị bệnh do vi khuẩn nhạy cảm với Tylosin gây ra. 
 Đối với lợn, điều trị viêm phổi, lỵ, tiêu chảy, đóng dấu, viêm khớp, nhiễm trùng thứ phát từ các bệnh truyền nhiễm do virus.',
-            'price'         => 13000
+            'price'         => 409279,
+            'format'        => 'Chai 100ml',
+            'pro_major'     => 10,
+            'pro_minor'     => 2
         ]);
 
         $product->save();
@@ -43,7 +49,10 @@ Trị bệnh do vi khuẩn nhạy cảm với Tylosin gây ra.
             'title'         => 'GENTA - 50 inj',
             'description'   => 'Phòng và điều trị các bệnh như sau:
 Đối với lợn: Điều trị bệnh tiêu chảy cấp tính ở lợn con, bệnh kiết lỵ, nhiễm trùng máu do E.coli, viêm ruột, viêm phổi, viêm teo mũi, viêm phế quản.',
-            'price'         => 14000
+            'price'         => 136219,
+            'format'        => 'Chai 100ml',
+            'pro_major'     => 10,
+            'pro_minor'     => 2
         ]);
 
         $product->save();
@@ -53,7 +62,10 @@ Trị bệnh do vi khuẩn nhạy cảm với Tylosin gây ra.
             'image'         => 'http://honghafeed.com.vn/Uploads/images/Sanpham/1.jpg',
             'title'         => 'LINCOMYCIN inj',
             'description'   => 'Đặc trị các bệnh đường hô hấp và đường tiêu hóa, viêm khớp, áp se, nhiễm trùng thứ phát sau khi làm phẫu thuật và viêm tai ngoài.',
-            'price'         => 15000
+            'price'         => 148230,
+            'format'        => 'Chai 100ml',
+            'pro_major'     => 10,
+            'pro_minor'     => 2
         ]);
 
         $product->save();
@@ -66,7 +78,10 @@ Trị bệnh do vi khuẩn nhạy cảm với Tylosin gây ra.
 Đối với trâu bò, dê, cừu: Chữa viêm phổi, viêm tử cung, viêm niệu đạo, viêm vú, thối móng, bệnh do xoắn khuẩn (Lepto), sốt vận chuyển, nhiễm trùng kế phát say các bệnh do virus.
 Đối với lợn: Viêm phổi, hồng lỵ, đóng dấu, viêm khớp, nhiễm trùng kế phát sau do các bệnh virus.
  Gia cầm: CRD, CCRD, nhiễm trùng kế phát sau các bệnh do virus. ',
-            'price'         => 16000
+            'price'         => 216700,
+            'format'        => 'Chai 100ml',
+            'pro_major'     => 10,
+            'pro_minor'     => 2
         ]);
 
         $product->save();
@@ -80,7 +95,10 @@ Sau khi tiêm, thuốc nhanh chóng hấp thu vào các mô cơ quan và đạt 
 Thuốc có độ an toàn cao và hầu như không có tác dụng phụ.
 
 Phòng và điều trị các bệnh về đường hô hấp và tiêu hóa, bao gồm bệnh tiêu chảy trên lợn, bê và chó do E.coli và Salmonella; bệnh viêm phổi do Mycoplasma và Pasteurella.',
-            'price'         => 17000
+            'price'         => 164812,
+            'format'        => 'Chai 100ml',
+            'pro_major'     => 10,
+            'pro_minor'     => 2
         ]);
 
         $product->save();
@@ -98,7 +116,10 @@ viêm ruột hoại tử do (Clostridium).
 – Sưng đầu, phù mặt.
 – Bệnh hô hấp phức hợp.
 – Bệnh viêm phổi, màng phổi, viêm da.',
-            'price'         => 18000
+            'price'         => 335565,
+            'format'        => 'Chai 100ml',
+            'pro_major'     => 5,
+            'pro_minor'     => 1
         ]);
 
         $product->save();
@@ -108,7 +129,10 @@ viêm ruột hoại tử do (Clostridium).
             'image'         => 'http://honghafeed.com.vn/Uploads/images/Sanpham/1.jpg',
             'title'         => 'Amoxicillin - LA inj',
             'description'   => 'Thuốc làm tăng cường quá trình trao đổi chất, thúc đẩy các phản ứng sinh hoá trong cơ thể, tạp một chế độ dinh dưỡng tốt, giúp cải thiện sức khoẻ vật nuôi.',
-            'price'         => 19000
+            'price'         => 294400,
+            'format'        => 'Chai 100ml',
+            'pro_major'     => 10,
+            'pro_minor'     => 2
         ]);
 
         $product->save();

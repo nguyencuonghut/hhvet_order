@@ -132,7 +132,8 @@ class ProductController extends Controller
         $m_order->address   = $request->input('address');
         $m_order->bill_addr = $request->input('bill_addr');
         $m_order->contact   = $request->input('contact');
-        $m_order->note   = $request->input('note');
+        $m_order->note      = $request->input('note');
+        $m_order->active    = true;
         Auth::user()->orders()->save($m_order);
 
         // Send email to Sale Admin

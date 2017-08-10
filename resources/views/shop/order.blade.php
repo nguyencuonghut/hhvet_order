@@ -15,7 +15,7 @@
                             </a>
                         </div>
                         <div class="media-body">
-                            <b class="media-heading">{{ $product->title }}</b>
+                            <b class="media-heading">{{ $product->title }}</b> | <i style="color:blue">Mua {{ $product->pro_major }} tặng {{ $product->pro_minor }}</i>
                             <br><br>
                             <i style="color:red">{{ number_format($product->price, 0, '.', ',') }} VNĐ</i>
                         </div>

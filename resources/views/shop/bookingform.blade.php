@@ -51,8 +51,10 @@
         <th>STT</th>
         <th>Mã SP</th>
         <th>Tên SP</th>
+        <th>Quy cách</th>
         <th>Đơn giá</th>
         <th>Số lượng bán</th>
+        <th>Số lượng khuyến mại</th>
         <th>Tổng tiền</th>
     </tr>
     <?php $i = 1 ?>
@@ -62,8 +64,10 @@
                 <td>{{ $i }}</td>
                 <td>{{ $item['item']['code'] }}</td>
                 <td>{{ $item['item']['title'] }}</td>
+                <td>{{ $item['item']['format'] }}</td>
                 <td>{{ number_format($item['item']['price'], 0, '.', ',') }}</td>
                 <td>{{ $item['qty'] }}</td>
+                <td>{{ floor($item['qty']/$item['item']['pro_major']) * $item['item']['pro_minor'] }}</td>
                 <td>{{ number_format($item['qty'] * $item['item']['price'], 0, '.', ',') }}</td>
             </tr>
             <?php $i++ ?>

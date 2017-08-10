@@ -21,7 +21,7 @@
                 <div class="thumbnail">
                     <img src="{{ $product->image }}" alt="..." class="img-responsive">
                     <div class="caption">
-                        <b style="color:red;">{{ $product->title }}</b>
+                        <b style="color:red;">{{ $product->title }}</b> | <i style="color:blue">Mua {{ $product->pro_major }} tặng {{ $product->pro_minor }}</i>
                         <br>
                         <!-- <p class="description">{{ mb_substr(strip_tags($product->description), 0, 120) }} {{ strlen(strip_tags($product->description)) > 120 ? '...':'' }}</p> -->
                         <div class="clearfix">

@@ -23,6 +23,8 @@ class CreateOrdersTable extends Migration
             $table->string('bill_addr')->nullable();
             $table->string('contact')->nullable();
             $table->text('note')->nullable();
+            $table->boolean('active')->nullable();
+            $table->text('reason')->nullable();
         });
     }
 
