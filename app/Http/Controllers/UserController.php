@@ -99,6 +99,7 @@ class UserController extends Controller
         $mailer->send('shop.cancelform', ['order' => $m_order] , function ($message) use ($data){
             $message->from('luong_thuoc@honghafeed.com.vn', 'HHVET Order System');
             $message->to('nguyenvancuong@honghafeed.com.vn')
+                ->cc('nguyencuonghut55@gmail.com')
                 ->subject('Hủy đơn đặt hàng thuốc cho đại lý:' . ' ' . $data['customer']);
         });
 
