@@ -128,6 +128,20 @@ class ProductController extends Controller
                 $m_order = $order;
             }
         }
+        //Update the number of each product if user modify
+        $products = Product::all();
+        $oldCart = NULL;
+        $cart = new Cart($oldCart);
+        foreach ($products as $product) {
+            $storedItem = ['qty' => 0, 'price' => $product->price, 'item' => $product];
+            $storedItem['qty'] = $request->input($product->code);
+            $storedItem['price'] = $product->price * $storedItem['qty'];
+            $cart->items[$product->code] = $storedItem;
+            $cart->totalQty += $request->input($product->code);
+            $cart->totalPrice += $storedItem['price'];
+        }
+        $m_order->cart = serialize($cart);
+        // Store the customer's information to database
         $m_order->name      = $request->input('name');
         $m_order->address   = $request->input('address');
         $m_order->bill_addr = $request->input('bill_addr');
@@ -145,6 +159,7 @@ class ProductController extends Controller
         $mailer->send('shop.bookingform', ['order' => $m_order] , function ($message) use ($data){
             $message->from('luong_thuoc@honghafeed.com.vn', 'HHVET Order System');
             $message->to('nguyenvancuong@honghafeed.com.vn')
+                ->cc('nguyencuonghut55@gmail.com')
                 ->subject('Đơn đặt hàng thuốc cho đại lý:' . ' ' . $data['customer']);
         });
 

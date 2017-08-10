@@ -4,21 +4,45 @@
 
 @section('content')
     @if($order->cart->totalPrice)
+        <form action="" method="post">
+        @foreach($order->cart->items as $product)
         <div class="row">
-            <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
-                <ul class="list-group">
-                    @foreach($order->cart->items as $item)
-                        @if($item['qty'])
-                            <li class="list-group-item">
-                                <span class="badge">{{ $item['qty'] }}</span>
-                                <strong>{{ $item['item']['title'] }}</strong>
-                                <span class="label label-primary">{{ number_format($item['item']['price'], 0, '.', ',') }} VNĐ</span>
-                            </li>
-                        @endif
-                    @endforeach
+            <div class="col-xs-7 col-sm-3 col-md-3 col-md-offset-3 col-sm-offset-3">
+                <ul class="media-list">
+                    <li class="media">
+                        <div class="media-left">
+                            <a href="#">
+                                <img class="media-object" style = "width: 60px" src="{{ $product['item']['image'] }}" alt="{{ $product['item']['title'] }}">
+                            </a>
+                        </div>
+                        <div class="media-body">
+                            <b class="media-heading">{{ $product['item']['title'] }}</b>
+                            <br><br>
+                            <i style="color:red">{{ number_format($product['item']['price'], 0, '.', ',') }} VNĐ</i>
+                        </div>
+                    </li>
                 </ul>
             </div>
+            <div class="col-xs-4 col-sm-3 col-md-3 col-xs-offset-1 col-sm-offset-1 col-md-offset-1">
+                <select name="{{ $product['item']['code'] }}" id="{{ $product['item']['code'] }}" class="form-control">
+                    <?php
+                    $numbers = ['0'];
+                    $i = 0;
+                    for($i = 1; $i < 500; $i++) {
+                        $numbers[$i] = $i;
+                    }
+                    ?>
+                    @foreach($numbers as $number)
+                        @if($number == $product['qty'])
+                        <option value="{{ $number }}" selected>{{ $number }}</option>
+                        @else
+                        <option value="{{ $number }}">{{ $number }}</option>
+                        @endif
+                    @endforeach
+                </select>
+            </div>
         </div>
+        @endforeach
         <div class="row">
             <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
                 <strong>Tổng tiền: {{ number_format($order->cart->totalPrice, 0, '.', ',') }} VNĐ</strong>
@@ -34,7 +58,6 @@
                         @endforeach
                     </div>
                 @endif
-                <form action="" method="post">
                     <div class="form-group">
                         <label for="name">Tên khách hàng</label>
                         <input type="text" id="name" name="name" class="form-control">
@@ -56,10 +79,10 @@
                         <textarea name="note" class="form-control"></textarea>
                     </div>
                     <button type="submit" class="btn btn-success btn-block">Đặt hàng</button>
-                    {{ csrf_field() }}
-                </form>
             </div>
         </div>
+        {{ csrf_field() }}
+        </form>
     @else
         <div class="row">
             <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
