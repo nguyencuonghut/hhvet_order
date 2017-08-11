@@ -14,6 +14,7 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
+                <li><a href="{{ route('order') }}"><i class="fa fa-plus-circle" aria-hidden="true"></i> Đặt hàng</a></li>
                 <li>
                     <a href="{{ route('product.shoppingCart') }}">
                         <i class="fa fa-shopping-cart" aria-hidden="true"></i> Giỏ hàng
@@ -29,7 +30,7 @@
                     <ul class="dropdown-menu">
                         @if(Auth::check())
                             <li><a href="{{ route('order') }}"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Đặt hàng</a></li>
-                            <li><a href="{{ route('user.profile') }}"><i class="fa fa-user" aria-hidden="true"></i> Profile</a></li>
+                            <li><a href="{{ route('user.profile') }}"><i class="fa fa-list-alt" aria-hidden="true"></i> Đơn hàng</a></li>
                             <li><a href="{{ route('user.logout') }}"><i class="fa fa-sign-out" aria-hidden="true"></i>Đăng xuất</a></li>
                         @else
                             <li><a href="{{ route('user.signin') }}"><i class="fa fa-user" aria-hidden="true"></i> Đăng nhập</a></li>

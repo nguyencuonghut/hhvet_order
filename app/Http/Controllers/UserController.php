@@ -46,7 +46,7 @@ class UserController extends Controller
         ));
 
         if(Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
-            return redirect()->route('user.profile')->with('message', 'Bạn đã đăng nhập thành công!');
+            return redirect()->route('order')->with('message', 'Bạn đã đăng nhập thành công!');
         }
         return redirect()->back();
     }
