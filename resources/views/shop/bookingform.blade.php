@@ -1,10 +1,3 @@
-<!DOCTYPE html>
-<html lang="en-US">
-<head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="{{ URL::to('css/main.css') }}">
-</head>
-
 <br>
 
 <style>
@@ -26,7 +19,6 @@
 
 </style>
 
-<body>
 <table style="border: 1px solid black;border-collapse: collapse;width: 1000px;">
     <tr>
         <td style="text-align: left;border: 1px solid black;"><b>Tên khách hàng</b></td>
@@ -81,5 +73,3 @@
 <hr>
 <p>Tổng tiền trước VAT:<b style="color:red"> {{ number_format($order->cart->totalPrice, 0, '.', ',') }} </b>VNĐ</p>
 <p>Tổng tiền sau VAT:<b style="color:red"> {{ number_format($order->cart->totalPrice * 1.05, 0, '.', ',') }} </b>VNĐ</p>
-</body>
-</html>
