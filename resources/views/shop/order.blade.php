@@ -26,7 +26,7 @@
                     <li class="media">
                         <div class="media-left">
                             <a href="#">
-                                <img class="media-object" style = "width: 60px" src="{{ '/upload/images/' . $product->image }}" alt="{{ $product->title }}">
+                                <img class="media-object" style = "width: 60px" src="{{ 'upload/images/' . $product->image }}" alt="{{ $product->title }}">
                             </a>
                         </div>
                         <div class="media-body">
