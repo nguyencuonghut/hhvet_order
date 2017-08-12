@@ -19,10 +19,10 @@ class CreateProductsTable extends Migration
             $table->string('code');
             $table->string('image');
             $table->string('title');
-            $table->text('description');
+            $table->text('description')->nullable();
             $table->string('format');
-            $table->integer('pro_major');
-            $table->integer('pro_minor');
+            $table->integer('pro_major')->nullable();
+            $table->integer('pro_minor')->nullable();
             $table->integer('price');
         });
     }

@@ -26,10 +26,13 @@
                     </a>
                 </li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user-circle" aria-hidden="true"></i> Quản lý tài khoản <span class="caret"></span></a>
+                    @if(Auth::check())
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user-circle" aria-hidden="true"></i> Chào, {{ Auth::user()->name }} <span class="caret"></span></a>
+                    @else
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user-circle" aria-hidden="true"></i> Quản lý tài khoản <span class="caret"></span></a>
+                    @endif
                     <ul class="dropdown-menu">
                         @if(Auth::check())
-                            <li><a href="{{ route('order') }}"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Đặt hàng</a></li>
                             <li><a href="{{ route('user.profile') }}"><i class="fa fa-list-alt" aria-hidden="true"></i> Đơn hàng</a></li>
                             <li><a href="{{ route('user.logout') }}"><i class="fa fa-sign-out" aria-hidden="true"></i>Đăng xuất</a></li>
                         @else

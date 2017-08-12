@@ -17,14 +17,20 @@ class UserController extends Controller
     public function postSignup(Request $request) {
         // Validate the input
         $this->validate($request, array(
-            'email'     => 'required|email|unique:users',
-            'password'  => 'required|min:6'
+            'phone'         => 'required|numeric|unique:users',
+            'password'      => 'required|min:6',
+            'password2'     => 'required|min:6',
+            'name'          => 'required'
         ));
 
+        if($request->input('password') != $request->input('password2')){
+            return redirect()->back()->with('error', 'Password phải khớp nhau giữa 2 lần nhập.');
+        }
         //store user information to database
         $user = new User([
-            'email'     => $request->email,
-            'password'  => bcrypt($request->password)
+            'phone'             => $request->input('phone'),
+            'password'          => bcrypt($request->input('password')),
+            'name'              => $request->input('name'),
         ]);
 
         $user->save();
@@ -32,7 +38,7 @@ class UserController extends Controller
         Auth::login($user);
 
         // redirect to other page
-        return redirect()->route('user.profile');
+        return redirect()->route('product.index')->with('message', 'Bạn đã đăng ký thành công!');
     }
 
     public function getSignin(){
@@ -41,14 +47,14 @@ class UserController extends Controller
 
     public function postSignin(Request $request) {
         $this->validate($request, array(
-            'email'     => 'email|required',
+            'phone'     => 'required|numeric',
             'password'  => 'required|min:6'
         ));
 
-        if(Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
-            return redirect()->route('order')->with('message', 'Bạn đã đăng nhập thành công!');
+        if(Auth::attempt(['phone' => $request->phone, 'password' => $request->password])) {
+            return redirect()->route('order');
         }
-        return redirect()->back();
+        return redirect()->back()->with('error', 'Email hoặc passsword của bạn bị sai. Vui lòng kiểm tra lại!');
     }
 
     public function getProfile() {

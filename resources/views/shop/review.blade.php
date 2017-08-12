@@ -13,7 +13,7 @@
                             <li class="media">
                                 <div class="media-left">
                                     <a href="#">
-                                        <img class="media-object" style = "width: 60px" src="{{ $product['item']['image'] }}" alt="{{ $product['item']['title'] }}">
+                                        <img class="media-object" style = "width: 60px" src="{{ '/upload/images/' . $product['item']['image'] }}" alt="{{ $product['item']['title'] }}">
                                     </a>
                                 </div>
                                 <div class="media-body">
@@ -62,19 +62,19 @@
                 @endif
                     <div class="form-group">
                         <label for="name">Tên khách hàng</label>
-                        <input type="text" id="name" name="name" class="form-control">
+                        <input type="text" id="name" name="name" value = "{{ Auth::user()->name }}" class="form-control">
                     </div>
                     <div class="form-group">
                         <label for="address">Địa chỉ giao hàng</label>
-                        <input type="text" id="address" name="address" class="form-control">
+                        <input type="text" id="address" name="address" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label for="bill_addr">Địa chỉ hóa đơn</label>
                         <input type="text" id="bill_addr" name="bill_addr" class="form-control">
                     </div>
                     <div class="form-group">
-                        <label for="contact">Người liên hệ</label>
-                        <input type="text" id="contact" name="contact" class="form-control">
+                        <label for="contact">Người liên hệ <i style="color:red">(Ghi rõ họ tên và số điện thoại)</i></label>
+                        <input type="text" id="contact" name="contact" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label for="note">Ghi chú</label>

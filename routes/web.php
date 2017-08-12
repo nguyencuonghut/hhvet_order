@@ -92,6 +92,9 @@ Route::group(['prefix' => 'user'], function() {
                 'uses' => 'ProductController@postReview',
                 'as' => 'review'
             ]);
+
+            // CRUD product
+            Route::resource('/items', 'ItemController');
         });
     });
 });

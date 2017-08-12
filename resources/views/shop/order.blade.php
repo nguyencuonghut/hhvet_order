@@ -3,6 +3,21 @@
 @section('title', 'Order')
 
 @section('content')
+    <div class="row">
+        <div class="col-xs-7 col-sm-3 col-md-3 col-md-offset-3 col-sm-offset-3">
+            @if ($message = Session::get('message'))
+                <div class="alert alert-success" role="alert">
+                    {{ Session::get('message') }}
+                </div>
+            @endif
+
+            @if ($message = Session::get('error'))
+                <div class="alert alert-danger" role="alert">
+                    {{ Session::get('error') }}
+                </div>
+            @endif
+        </div>
+    </div>
     <form action="{{ route('order') }}" method="post">
     @foreach($products as $product)
         <div class="row">
@@ -11,7 +26,7 @@
                     <li class="media">
                         <div class="media-left">
                             <a href="#">
-                                <img class="media-object" style = "width: 60px" src="{{ $product->image }}" alt="{{ $product->title }}">
+                                <img class="media-object" style = "width: 60px" src="{{ '/upload/images/' . $product->image }}" alt="{{ $product->title }}">
                             </a>
                         </div>
                         <div class="media-body">
@@ -23,7 +38,7 @@
                 </ul>
             </div>
             <div class="col-xs-4 col-sm-3 col-md-3 col-xs-offset-1 col-sm-offset-1 col-md-offset-1">
-                <select name="{{ $product->code }}" id="{{ $product->code }}" class="form-control">
+                <select name="{{ $product->code }}" id="{{ $product->code }}" style="text-align: center" class="form-control">
                     <?php
                         $numbers = ['0'];
                         $i = 0;
