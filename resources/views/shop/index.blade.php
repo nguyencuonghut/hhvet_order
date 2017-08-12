@@ -31,7 +31,7 @@
             @foreach($productChunk as $product)
             <div class="col-lg-3 col-md-4 col-xs-6">
                 <div class="thumbnail">
-                    <img src="{{ '/upload/images/' . $product->image }}" alt=" {{ $product->title }} " class="img-responsive">
+                    <img src="{{ 'upload/images/' . $product->image }}" alt=" {{ $product->title }} " class="img-responsive">
                     <div class="caption">
                         <b style="color:red;">{{ $product->title }}</b> | <i style="color:blue">Mua {{ $product->pro_major }} tặng {{ $product->pro_minor }}</i>
                         <br>
