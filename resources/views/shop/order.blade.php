@@ -26,7 +26,8 @@
                     <li class="media">
                         <div class="media-left">
                             <a href="#">
-                                <img class="media-object" style = "width: 60px" src="{{ 'upload/images/' . $product->image }}" alt="{{ $product->title }}">
+								{{ Html::image('/upload/images/' . $product->image, $product->title, array('class' => 'media-object', 'width' => '60')) }}
+
                             </a>
                         </div>
                         <div class="media-body">

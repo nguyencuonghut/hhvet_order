@@ -47,7 +47,7 @@
                 <tbody>
                 @foreach($products as $product)
                     <tr>
-                        <td><img src="{{ asset('upload/images/' . $product->image) }}" alt="{{ $product->title }}" height="120" width="120"></td>
+                        <td>{{ Html::image('/upload/images/' . $product->image, $product->title, array('class' => 'media-object', 'width' => '120', 'height' => '120')) }}</td>
                         <th>{{ $product->code }}</th>
                         <td>{{ $product->title}}</td>
                         <td>{{ $product->format}}</td>
